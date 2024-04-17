@@ -1,4 +1,5 @@
 ---@meta
+---@class skynet.sharedata
 local sharedata = {}
 ---* 不可进行频繁的数据共享
 ---* 在当前节点内创建一个共享数据对象。

@@ -1,5 +1,5 @@
 ---@meta
----@class debug
+---@class skynet.debug
 local debug = {}
 
 ---初始化 debug

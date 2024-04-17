@@ -1,7 +1,7 @@
 ---@meta
 ---*网络数据打包解包模块
 ---*每个包就是 2 个字节 + 数据内容。这两个字节是 Big-Endian 编码的一个数字。数据内容可以是任意字节。
----@class netpack
+---@class skynet.netpack
 local netpack = {}
 
 ---进行分包处理事件判断

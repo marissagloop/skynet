@@ -1,7 +1,7 @@
 ---@meta
 ---* cluster 相关的库
 ---* 这个库，使用了一个叫 clusterd 的服务来进行工作
----@class cluster
+---@class skynet.cluster
 local cluster = {}
 
 ---* 对某个节点上的服务传输消息

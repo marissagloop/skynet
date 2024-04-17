@@ -1,6 +1,6 @@
 ---@meta
 ---* 此模块使用了一个唯一服务  multicastd 来进行通信
----@class multicast
+---@class skynet.multicast
 local multicast = {}
 
 ---@class channel_meta

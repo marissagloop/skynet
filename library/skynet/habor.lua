@@ -1,6 +1,6 @@
 ---@meta
 ---* 多节点相关的 API
----@class harbor
+---@class skynet.harbor
 local harbor = {}
 
 ---*  注册一个全局名字。如果 handle 为空，则注册自己。skynet.name 和 skynet.register 是用其实现的。

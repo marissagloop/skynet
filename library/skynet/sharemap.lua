@@ -7,7 +7,7 @@ local sharemapreader = {}
 ---* 这里使用了 sproto 来描述序列化数据
 ---* 其内部引用了代表 Lua 的源数据
 ---* 和由 stm 构造的 stmobj
----@class sharemap
+---@class skynet.sharemap
 local sharemap = {}
 ---* 注册 sproto 协议描述文件
 function sharemap.register(protofile) end

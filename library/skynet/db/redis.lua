@@ -1,4 +1,5 @@
 ---@meta
+---@class skynet.redis
 local redis = {}
 
 ---@class redisconfig

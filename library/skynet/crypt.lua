@@ -1,5 +1,5 @@
 ---@meta
----@class crypt
+---@class skynet.crypt
 local crypt = {}
 
 ---计算 hash

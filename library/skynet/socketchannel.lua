@@ -1,6 +1,6 @@
 ---@meta
 ---socket channel 在创建时，并不会立即建立连接。如果你什么都不做，那么连接建立会推迟到第一次 request 请求时。这种被动建立连接的过程会不断的尝试，即使第一次没有连接上，也会重试。
----@class socketchannel
+---@class skynet.socketchannel
 local socket_channel = {}
 
 ---创建一个新的套接字频道
@@ -24,7 +24,7 @@ local socket_channel = {}
 ---*     __overload = false,
 ---* }
 ---@param desc table {host, port, backup, auth, response, nodelay, overload}
----@return socketchannel
+---@return skynet.socketchannel
 function socket_channel.channel(desc) end
 
 ---连接频道

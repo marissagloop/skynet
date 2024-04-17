@@ -7,7 +7,7 @@ setmetatable(stmobj, stmobj)
 ---* 更新对象，实际上就是重新替换一个序列化对象
 stmobj.__call = function(pointer, sz) end
 
----@class stm
+---@class skynet.stm
 local stm = {}
 ---* 将一个指针，用来构造一个 stm 对象
 ---* 任何 Lua 数据想要用 stm 共享，必须先序列化，如 sharemap 使用  sproto 来进行

@@ -1,4 +1,5 @@
 ---@meta
+---@class skynet.db.mongo
 local mongo = {}
 
 ---@class mongo_client
@@ -9,7 +10,7 @@ local mongo = {}
 ---@field authdb string
 ---@field authmod string
 ---@field __id number
----@field __sock socketchannel
+---@field __sock skynet.socketchannel
 local mongo_client = {}
 
 ---@class mongo_db

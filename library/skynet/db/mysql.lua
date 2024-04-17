@@ -1,10 +1,10 @@
 ---@meta
----@class MySQL
+---@class skynet.db.mysql
 local _M = {}
 
 ---comment
 ---@param opts table {database,user, password,charset,host, port, overload}
----@return MySQL
+---@return skynet.db.mysql
 function _M.connect(opts) end
 function _M:disconnect() end
 ---@param query string

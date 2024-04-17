@@ -1,6 +1,6 @@
 ---@meta
 --- 一张表一旦被 query 一次，其数据的生命期将一直维持调用 query 的该服务退出。目前没有手段主动消除对一张共享表的引用。
----@class sharetable
+---@class skynet.sharetable
 local sharetable = {}
 ---* 从一个源文件读取一个共享表，这个文件需要返回一个 table ，这个 table 可以被多个不同的服务读取。... 是传给这个文件的参数。
 ---* 可以多次 load 同一个 filename 的表，这样的话，对应的 table 会被更新。使用这张表的服务需要调用 update 更新。

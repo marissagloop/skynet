@@ -1,5 +1,5 @@
 ---@meta
----@class socketdriver
+---@class skynet.socketdriver
 local socketdriver = {}
 ---* 作为客户端，连接到一个 IP和端口
 ---* 会返回一个代表了 skynet 内部和系统套接字文件描述符相关的结构索引

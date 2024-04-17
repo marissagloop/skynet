@@ -46,7 +46,7 @@ function socketdriver.send(id, msg, sz) end
 ---@param id number @skynet对套接字描述符的表示
 ---@param msg table | lightuserdata | userdata | string @要传输的数据
 ---@param sz number | nil @长度
-function socketdriver.lsend() end
+function socketdriver.lsend(id,msg,sz) end
 ---绑定系统套接字到一个skynet的索引
 ---@param fd number
 ---@return number @skynet索引

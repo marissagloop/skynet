@@ -17,7 +17,7 @@ local netpack = {}
 function netpack.filter(queue, msg, sz) end
 ---从队列中弹出一条消息
 ---@param queue userdata
----@return fd, msg, sz
+---@return integer fd,string msg,integer sz
 function netpack.pop(queue) end
 ---* 把一个字符串（或一个 C 指针加一个长度）打包成带 2 字节包头的数据块。
 ---* 这和我们我们用 string.pack('>I2') 打包字符串长度，再连上字符串是一样的，不过，这样打包后是在，string pack 是在 Lua 管理，而不是 C 管理

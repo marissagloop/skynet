@@ -2,7 +2,7 @@
 ---* 所谓阻塞模式，实际上是利用了 lua 的 coroutine 机制。当你调用 socket api 时，服务有可能被挂起（时间片被让给其他业务处理)，待结果通过 socket 消息返回，coroutine 将延续执行。
 ---* socketdrver 的 Lua 层表示
 ---* 注意与 gateserver 的区别， 他们都会接管 socket 类型的消息
----@class socket
+---@class skynet.socket
 local socket = {}
 ---* 作为客户端，连接到一个 IP和端口
 ---* 会返回一个代表了 skynet 内部和系统套接字文件描述符相关的结构索引
@@ -26,7 +26,7 @@ function socket.stdin() end
 ---* 当有数据事件到达时，就会 skynet.wakeup 协程来
 ---@param id number @skynet套接字索引
 ---@param accept? fun(...) @事件回调函数，监听字才需要这个
----@return number | nil, error
+---@return number | nil
 function socket.start(id, accept) end
 
 ---* 暂停收发一个套接字上的数据
@@ -54,12 +54,12 @@ function socket.read(id, sz) end
 
 ---* 从一个 socket 上读所有的数据，直到 socket 主动断开，或在其它 coroutine 用 socket.close 关闭它。
 ---@param id number @skynet套接字索引
----@return buffer | nil, buffer
+---@return string | nil
 function socket.readall(id) end
 
 ---* 从一个 socket 上读一行数据。sep 指行分割符。默认的 sep 为 "\n"。读到的字符串是不包含这个分割符的。
 ---@param id number @skynet套接字索引
----@return buffer | nil, buffer
+---@return string | nil
 function socket.readline(id, sep) end
 
 ---* 等待一个 socket 可读
@@ -110,7 +110,7 @@ function socket.write(id, msg, sz) end
 ---* 把字符串写入低优先级队列。如果正常的写队列还有写操作未完成时，低优先级队列上的数据永远不会被发出。只有在正常写队列为空时，才会处理低优先级队列。但是，每次写的字符串都可以看成原子操作。不会只发送一半，然后转去发送正常写队列的数据。
 ---@param id number @skynet套接字索引
 ---@param msg string @数据
-function socket.lwrite() end
+function socket.lwrite(id,msg) end
 
 function socket.header() end
 

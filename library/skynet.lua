@@ -11,8 +11,9 @@
 ---|+'"queue"'
 ---|+'"debug"'
 ---|+'"trace"'
----@alias SERVICEADDR '".servicename"' | '":0000000C"' | integer
+---@alias SERVICEADDR integer | string
 ---@alias MESSAGEHANDLER fun(session:integer, source:integer, cmd:string, ...)
+---@class skynet
 local skynet = {
 	-- read skynet.h
 	PTYPE_TEXT = 0,
@@ -166,8 +167,9 @@ function skynet.trash(msg, sz) end
 ---  具体可以查看 skynet-server.c 中的 dispatch_message 的代码
 ---@param addr SERVICEADDR
 ---@param typename string @类型名
+---@param funname string @函数名
 ---@vararg any @传输的数据
-function skynet.send(addr, typename, ...) end
+function skynet.send(addr, typename, funname, ...) end
 
 ---* 向一个服务发送消息
 ---* 它和 skynet.send 功能类似，但更细节一些。它可以指定发送地址（把消息源伪装成另一个服务），指定发送的消息的 session 。
@@ -194,9 +196,10 @@ function skynet.rawsend(addr, typename, msg, sz) end
 ---* 实际上，他也是利用 c.send 来发送消息，不过传送的会话 ID 是nil，会由引擎来生成这个会话ID
 ---@param addr SERVICEADDR @目标服务地址
 ---@param typename string @类型名
+---@param funname string
 ---@vararg any @传输的数据
 ---@return ...
-function skynet.call(addr, typename, ...) end
+function skynet.call(addr, typename,funname,...) end
 
 ---* **阻塞API**
 ---* 向一个服务，不打包发送数据，并期待得到响应

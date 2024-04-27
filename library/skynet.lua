@@ -167,7 +167,7 @@ function skynet.trash(msg, sz) end
 ---  具体可以查看 skynet-server.c 中的 dispatch_message 的代码
 ---@param addr SERVICEADDR
 ---@param typename string @类型名
----@param funname string @函数名
+---@param funname string|integer @函数名
 ---@vararg any @传输的数据
 function skynet.send(addr, typename, funname, ...) end
 
@@ -196,7 +196,7 @@ function skynet.rawsend(addr, typename, msg, sz) end
 ---* 实际上，他也是利用 c.send 来发送消息，不过传送的会话 ID 是nil，会由引擎来生成这个会话ID
 ---@param addr SERVICEADDR @目标服务地址
 ---@param typename string @类型名
----@param funname string
+---@param funname string | number
 ---@vararg any @传输的数据
 ---@return ...
 function skynet.call(addr, typename,funname,...) end
@@ -210,6 +210,7 @@ function skynet.call(addr, typename,funname,...) end
 ---@param typename string @类型名
 ---@param msg lightuserdata|string
 ---@param sz? number
+---@return lightuserdata|string, number?
 function skynet.rawcall(addr, typename, msg, sz) end
 
 --- https://blog.codingnow.com/2020/09/skynet_select.html
@@ -267,6 +268,7 @@ function skynet.exit() end
 --- > 启动参数其实是以字符串拼接的方式传递过去的。所以不要在参数中传递复杂的 Lua 对象。接收到的参数都是字符串，且字符串中不可以有空格（否则会被分割成多个参数）。这种参数传递方式是历史遗留下来的，有很多潜在的问题。目前推荐的惯例是，让你的服务响应一个启动消息。在 newservice 之后，立刻调用 skynet.call 发送启动请求。
 ---@param name string #脚本名字
 ---@vararg string|number #可选参数
+---@return integer|nil
 function skynet.newservice(name, ...) end
 
 --- 启动一个全局唯一服务
@@ -274,6 +276,7 @@ function skynet.newservice(name, ...) end
 ---* global 为其他的，表示在本地启动一个本地唯一的服务，global 就代表了服务名
 ---@param global boolean|string
 ---@vararg any
+---@return integer
 function skynet.uniqueservice(global, ...) end
 
 --- 查询一个全局服务
@@ -281,6 +284,7 @@ function skynet.uniqueservice(global, ...) end
 ---* global 为其他的，表示在本地启动一个本地唯一的服务，global 就代表了服务名
 ---@param global boolean|string
 ---@vararg any
+---@return integer
 function skynet.queryservice(global, ...) end
 
 ------------------ 时钟和线程 ------------------------
@@ -384,7 +388,7 @@ function skynet.killthread(thread) end
 
 ---获取我们为 skynet 设置的环境变量
 ---@param key string
----@return any
+---@return string
 function skynet.getenv(key) end
 
 ---为 skynet 设置的环境变量

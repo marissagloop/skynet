@@ -24,7 +24,7 @@ function socketdriver.shutdown(id) end
 ---监听套接字
 ---@param host string
 ---@param port number
----@param backlog number
+---@param backlog number?
 ---@return number @skynet对套接字描述符的表示
 function socketdriver.listen(host, port, backlog) end
 ---发送数据，这个函数会将我们要发送的数据放到一个 socket_sendbuffer 内，再丢给 skynet，由网络线程进行发送
